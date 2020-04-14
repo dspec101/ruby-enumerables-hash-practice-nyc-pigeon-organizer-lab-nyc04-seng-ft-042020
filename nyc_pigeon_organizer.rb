@@ -1,21 +1,43 @@
+
+require 'pry'
 def nyc_pigeon_organizer(data)
-  # write your code here!
-  pigeon_list = {}
-  data.each do |color_gender_lives, value|
-    value.each do |stats, all_names|
-      all_names.each do |name|
-        if pigeon_list[name] == nil
-          pigeon_list[name] = {}
+  new_hash = {}
+  data.each do |key, value|
+    value.each do |new_value, names|
+   
+      names.each do |name|
+          binding.pry
+        if !new_hash[name]
+          new_hash[name] = {}
         end
-        if pigeon_list[name][color_gender_lives] == nil
-          pigeon_list[name][color_gender_lives] = []
+
+        if !new_hash[name][key]
+          new_hash[name][key] = []
         end
-        pigeon_list[name][color_gender_lives].push(stats.to_s)
+
+        new_hash[name][key] << new_value.to_s
+
       end
-    end 
+    end
   end
-  pigeon_list
+  new_hash
 end
 
-
+# def nyc_pigeon_organizer(data)
+#   pigeon_list = {}
+#   data.each do |color_gender_lives, value|
+#     value.each do |stats, all_names|
+#       all_names.each do |namename|
+#         if pigeon_list[name] == nil
+#           pigeon_list[name] = {}
+#         end
+#         if pigeon_list[name][color_gender_lives] == nil
+#           pigeon_list[name][color_gender_lives] = []
+#         end
+#         pigeon_list[name][color_gender_lives].push(stats.to_s)
+#       end
+#     end 
+#   end
+#   pigeon_list
+# end
 
